@@ -2,6 +2,7 @@
 title: django 开发博客 --- 博客首页 (三)
 date: 2020-03-25 15:46:27
 tags:
+    - python
 ---
 
 ### 一、 设置html路径配置

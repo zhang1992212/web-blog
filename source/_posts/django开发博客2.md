@@ -1,7 +1,8 @@
 ---
 title: django 开发博客 --- 创建新app (二)
 date: 2020-03-25 15:46:24
-tags:
+tags: 
+    - python
 ---
 
 ### 一、 创建新APP
