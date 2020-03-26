@@ -5,9 +5,11 @@ tags:
     - python
     - django2
     - xadmin
+categories:
+    - python
 ---
 
-### django2.0 安装 xadmin2.0
+#### django2.0 安装 xadmin2.0
 ```python
 pip install https://codeload.github.com/sshwsfc/xadmin/zip/django2
 ```
