@@ -22,6 +22,11 @@ git checkout ${branch:-master}
 echo '拉取分支代码...'
 git pull git@github.com:zhang1992212/web-blog.git ${branch:-master}
 
+if [ ! -d "node_modules" ]; then
+	echo "安装hexo..."
+	npm install hexo --save
+fi
+
 echo "清理html"
 hexo clean
 
@@ -29,6 +34,6 @@ echo "生成html"
 hexo deploy
 
 echo "同步html"
-rsync -avzp --delete $exclude --exclude=.git /data/git/web-blog/public /data/geek/
+rsync -avzp --delete $exclude --exclude=.git /data/git/web-blog/public/ /data/geek/web-blog
 
 echo "发布完成"
