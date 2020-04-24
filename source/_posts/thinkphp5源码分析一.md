@@ -5,8 +5,10 @@ tags:
 	- thinkphp5 
 	- php
 	- 源码分析
-categorites: 
-    - php
+categories: 
+    - PHP
+id:
+	- 1
 ---
 #### 1 入口文件源代码(/public/index.php) 
 

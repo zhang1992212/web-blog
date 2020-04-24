@@ -6,7 +6,7 @@ tags:
     - django2
     - xadmin
 categories:
-    - python
+    - PYTHON
 ---
 
 #### django2.0 安装 xadmin2.0

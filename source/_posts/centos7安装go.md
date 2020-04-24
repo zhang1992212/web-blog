@@ -4,7 +4,7 @@ date: 2020-01-25 15:45:07
 tags: 
     - GO
     - Centos7
-categorites: 
+categories: 
     - GO
 ---
 

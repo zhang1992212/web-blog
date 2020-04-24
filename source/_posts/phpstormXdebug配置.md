@@ -5,7 +5,7 @@ tags:
     - php
     - xdebug
 categories:
-    - php
+    - PHP
 ---
 
 #### 1.php配置文件配置

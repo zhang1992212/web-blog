@@ -4,8 +4,8 @@ date: 2018-03-25 15:45:17
 tags:
     - 多线程
     - php
-categires:
-    - php
+categories:
+    - PHP
 ---
 
 ```php

@@ -6,7 +6,7 @@ tags:
     - python
     - 博客
 categories:
-    - python
+    - PYTHON
 ---
 
 ### 一、 创建新APP

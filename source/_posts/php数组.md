@@ -5,8 +5,8 @@ tags:
     - php
     - array
     - 数组
-categires:
-    - php
+categories:
+    - PHP
 ---
 
 # PHP数组函数

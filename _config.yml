@@ -4,7 +4,7 @@
 
 # Site
 title: GEEK
-subtitle: '博客'
+subtitle: 'GEEK的技术博客'
 description: 'GEEK的技术博客'
 keywords: 'geek,博客,blog'
 author: GEEK
@@ -52,7 +52,7 @@ highlight:
   wrap: true
   hljs: false
 
-#hexo-theme-matery 
+#hexo-theme-matery 代码高亮
 prism_plugin:
   mode: 'preprocess'    # realtime/preprocess
   theme: 'a11y-dark'

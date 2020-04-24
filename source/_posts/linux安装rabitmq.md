@@ -5,7 +5,7 @@ tags:
     - linux
     - rabbitmq
 categories:
-    - linux
+    - LINUX
 ---
 
 ###一、安装erlang

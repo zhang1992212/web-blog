@@ -5,8 +5,8 @@ tags:
     - thinkphp5 
     - php
     - 源码分析
-categorites: 
-    - php
+categories: 
+    - PHP
 ---
 
 #### 框架引导文件源代码 (/thinkphp/start.php)

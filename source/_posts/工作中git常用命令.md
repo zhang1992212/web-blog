@@ -4,8 +4,8 @@ date: 2017-10-25 15:29:57
 tags: 
     - git
     - 命令
-categorites: 
-    - git
+categories: 
+    - GIT
 ---
 
 #### 1. 克隆远端项目到本地
