@@ -105,9 +105,9 @@ theme: hexo-theme-matery
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: git
-  repo: root@121.42.14.139:/data/geek/web/blog.git
-  branch: master
+  #type: git
+  #repo: root@121.42.14.139:/data/geek/web/blog.git
+  #branch: master
   message: 
 
 jsonContent:
