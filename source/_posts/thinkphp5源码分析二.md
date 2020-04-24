@@ -1,32 +1,30 @@
 ---
 title: thinkphp5源码分析二 框架引导
-date: 2020-03-25 15:13:36
+date: 2018-09-01 14:22:52
 tags: 
-    - THINKPHP5 
-    - PHP
+    - thinkphp5 
+    - php
     - 源码分析
-categorites: 
+categories: 
     - PHP
-    - THINKPHP5
+id:
+	- 2
 ---
 
-##### 框架引导文件源代码 (/thinkphp/start.php)
+#### 框架引导文件源代码 (/thinkphp/start.php)
 
+##### 1.引入基础文件（/thinkphp/base.php）
 
-----------
-1.引入基础文件（/thinkphp/base.php）
-
-```
+```php
 // 加载基础文件
 require __DIR__ . '/base.php';
 ```
-**基础文件（/thinkphp/base.php）**
+###### 基础文件（/thinkphp/base.php）
 
 <!-- more -->
-----------
-2.定义系统常量
+##### 2.定义系统常量
 
-```
+```php
 define('THINK_VERSION', '5.0.9');
 define('THINK_START_TIME', microtime(true));
 define('THINK_START_MEM', memory_get_usage());
@@ -51,15 +49,15 @@ defined('ENV_PREFIX') or define('ENV_PREFIX', 'PHP_'); // 环境变量的配置�
 define('IS_CLI', PHP_SAPI == 'cli' ? true : false);
 define('IS_WIN', strpos(PHP_OS, 'WIN') !== false);
 ```
-3.载入Loader类(/thinkphp/library/think/Loader.php)
+##### 3.载入Loader类(/thinkphp/library/think/Loader.php)
 
-```
+```php
 // 载入Loader类
 require CORE_PATH . 'Loader.php';
 ```
-4.加载环境变量配置文件（/.env）
+##### 4.加载环境变量配置文件（/.env）
 
-```
+```php
 // 加载环境变量配置文件
 if (is_file(ROOT_PATH . '.env')) {
     $env = parse_ini_file(ROOT_PATH . '.env', true);
@@ -76,22 +74,22 @@ if (is_file(ROOT_PATH . '.env')) {
     }
 }
 ```
-5.注册自动加载
+##### 5.注册自动加载
 
-```
+```php
 // 注册自动加载
 \think\Loader::register();
 ```
 Loader类（/thinkphp/library/think/Loader.php） 
-6. 注册系统自动加载
+##### 6. 注册系统自动加载
 
-```
+```php
 // 注册系统自动加载
 spl_autoload_register($autoload ?: 'think\\Loader::autoload', true, true);
 ```
-7.注册命名空间定义
+##### 7.注册命名空间定义
 
-```
+```php
 // 注册命名空间定义
  self::addNamespace([
     'think'    => LIB_PATH . 'think' . DS,
@@ -100,31 +98,31 @@ spl_autoload_register($autoload ?: 'think\\Loader::autoload', true, true);
  ]);
 ```
 ![这里写图片描述](https://imgconvert.csdnimg.cn/aHR0cDovL2ltYWdlczIwMTUuY25ibG9ncy5jb20vYmxvZy8xMDQwMzc4LzIwMTcwNi8xMDQwMzc4LTIwMTcwNjIxMTcxNDUxNDc2LTIwNjc5Mjk3MTQucG5n?x-oss-process=image/format,png)
-8. 加载类库映射文件（/runtime/classmap.php）
+##### 8. 加载类库映射文件（/runtime/classmap.php）
 
-```
+```php
  // 加载类库映射文件
  if (is_file(RUNTIME_PATH . 'classmap' . EXT)) {
     self::addClassMap(__include_file(RUNTIME_PATH . 'classmap' . EXT));
  }
 ```
-9.composer自动加载（/vendor/composer/）
+##### 9.composer自动加载（/vendor/composer/）
 
-```
+```php
 // Composer自动加载支持
  if (is_dir(VENDOR_PATH . 'composer')) {
      self::registerComposerLoader();
  }
 ```
-10.自动加载extend目录（/extend）
+##### 10.自动加载extend目录（/extend）
 
-```
+```php
 // 自动加载extend目录
 self::$fallbackDirsPsr4[] = rtrim(EXTEND_PATH, DS);
 ```
-11.注册错误和异常处理机制（/thinkphp/library/think/Error.php）
+##### 11.注册错误和异常处理机制（/thinkphp/library/think/Error.php）
 
-```
+```php
 // 报告所有错误
 error_reporting(E_ALL);
 //设置用户自定义的错误处理程序
@@ -134,9 +132,9 @@ set_exception_handler([__CLASS__, 'appException']);
 //定义PHP程序执行完成后执行的函数
 register_shutdown_function([__CLASS__, 'appShutdown']);
 ```
-12.加载惯例配置文件(/thinkphp/convention.php)
+##### 12.加载惯例配置文件(/thinkphp/convention.php)
 
-```
+```php
  // 加载惯例配置文件
  \think\Config::set(include THINK_PATH . 'convention' . EXT);
 ```

@@ -1,10 +1,14 @@
 ---
 title: php多线程
-date: 2020-03-25 15:45:17
+date: 2018-03-25 15:45:17
 tags:
+    - 多线程
+    - php
+categories:
+    - PHP
 ---
 
-```
+```php
 //$num是控制开启进程的数量
 $num = 8;
 for ($i = 0; $i <$num ; $i++) {

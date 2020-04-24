@@ -1,12 +1,17 @@
 ---
 title: django 开发博客 --- 博客首页 (三)
-date: 2020-03-25 15:46:27
+date: 2020-05-26 10:46:27
 tags:
+    - django
+    - python
+    - 博客
+categories:
+    - PYTHON
 ---
 
 ### 一、 设置html路径配置
 ###### 编辑GeekBlog/settings.py 配置TEMPLATES的DIRS， 这里设置的是根目录下的tempaltes目录
-```
+```python
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -27,7 +32,7 @@ TEMPLATES = [
 <!-- more -->
 ### 二、设置首页控制器
 ###### 编辑blog/views.py
-```
+```python
 from django.views.generic.list import ListView
 
 
@@ -45,11 +50,11 @@ class IndexView(ListView):
 ```
 ### 三、 创建博客前台路由
 ###### 在blog目录下创建urls.py
-```
+```bash
 vim blog/urls.py
 ```
 ###### 设置网站跟路由 定向到 IndexView方法下
-```
+```python
 from django.urls import path
 from . import views
 
@@ -60,11 +65,11 @@ urlpatterns = [
 ]
 ```
 ####### 将博客路由注册到根路由下
-```
+```bash
 vim GeekBlog/urls.py
 ```
 ###### 将blog下的url引入
-```
+```python
 from django.contrib import admin
 from django.urls import path, include
 
@@ -82,19 +87,19 @@ urlpatterns = [
 ###### 在templates下创建layout文件夹（通用模板文件存放在此）
 ###### 创建base、nav、footer html文件
 ###### base.html 文件为布局文件 引入nav.html、footer.html
-```
+```python
 {% include 'layout/nav.html' %}
 {% include 'layout/footer.html' %}
 ```
 #### 创建头部布局
 ###### 在base.html中添加
-```
+```python
 {% block header %}
 
 {% endblock %}
 ```
 ###### 在index.html 中重写
-```
+```python
 {% block header %}
     新的头部
 {% endblock %}
@@ -105,7 +110,7 @@ urlpatterns = [
 
 ##### 2. 封装query tag
 ###### 在blog_tag.py 下 新增：
-```
+```python
 from django import template
 
 register = template.Library()
@@ -123,7 +128,7 @@ def query(qs, **kwargs):
 ```
 ##### 3. 封装自定义变量
 ###### 在blog下创建header.py (存放网站seo信息及导航信息)
-```
+```python
 def seo_processor(requests):
     setting = get_blog_setting()
     value = {
@@ -149,7 +154,7 @@ def seo_processor(requests):
 ```
 ###### 将网站变量注册到模板中
 ###### 编辑GeekBlog/settings.py
-```
+```python
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -169,7 +174,7 @@ TEMPLATES = [
 ]
 ```
 ###### 在html中使用
-```
+```python
 {% load blog_tags %}
 {% query category parent_id=0 deleted=0 as root_categorys %}
 
@@ -179,7 +184,7 @@ TEMPLATES = [
 ```
 ### 七、 配置侧边栏
 ###### 在blog/templatetags/blog_tags.py中加载siderbar.html
-```
+```python
 @register.inclusion_tag('blog/tags/sidebar.html')
 def load_sidebar():
     """

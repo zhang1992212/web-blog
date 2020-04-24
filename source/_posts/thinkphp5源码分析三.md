@@ -1,45 +1,44 @@
 ---
 title: thinkphp5源码分析三 应用启动
-date: 2020-03-25 15:13:40
+date: 2018-09-01 18:22:52
 tags: 
-    - THINKPHP5 
-    - PHP
+    - thinkphp5 
+    - php
     - 源码分析
-categorites: 
+categories: 
     - PHP
-    - THINKPHP5
 ---
 
 #### 框架引导文件源代码 (/thinkphp/start.php)
 
-```
+```php
 // 执行应用
 App::run()->send();
 ```
 <!-- more -->
-1.应用启动（/thinkphp/library/think/App.php）
+##### 1.应用启动（/thinkphp/library/think/App.php）
 
-```
+```php
 //初始化请求实例
 is_null($request) && $request = Request::instance();
 ```
-2.添加APP命名空间（app => /application）
+##### 2.添加APP命名空间（app => /application）
 
-```
+```php
 //添加app命名空间
 if (defined('APP_NAMESPACE')) {
  self::$namespace = APP_NAMESPACE;
 }
 Loader::addNamespace(self::$namespace, APP_PATH);
 ```
-3.初始化应用
+##### 3.初始化应用
 
-```
+```php
 // 初始化应用
  $config       = self::init();
 ```
 
-```
+```php
 // 定位模块目录
   $module = $module ? $module . DS : '';
 
@@ -85,9 +84,9 @@ Loader::addNamespace(self::$namespace, APP_PATH);
        Lang::load($path . 'lang' . DS . Request::instance()->langset() . EXT);
     }
 ```
-4.绑定模块、控制器
+##### 4.绑定模块、控制器
 
-```
+```php
 if (defined('BIND_MODULE')) {
      // 模块/控制器绑定
      BIND_MODULE && Route::bind(BIND_MODULE);
@@ -99,9 +98,9 @@ if (defined('BIND_MODULE')) {
      }
 }
 ```
-5.加载语言
+##### 5.加载语言
 
-```
+```php
 // 默认语言
 Lang::range($config['default_lang']);
 if ($config['lang_switch_on']) {
@@ -116,9 +115,9 @@ Lang::load([
     APP_PATH . 'lang' . DS . $request->langset() . EXT,
 ]);
 ```
-6.获取应用调度信息
+##### 6.获取应用调度信息
 
-```
+```php
 // 获取应用调度信息
 $dispatch = self::$dispatch;
 
@@ -127,9 +126,9 @@ if (empty($dispatch)) {
     $dispatch = self::routeCheck($request, $config);
 }
 ```
-7.记录路由和请求信息
+##### 7.记录路由和请求信息
 
-```
+```php
 // 记录路由和请求信息
 if (self::$debug) {
     Log::record('[ ROUTE ] ' . var_export($dispatch, true), 'info');
@@ -137,24 +136,24 @@ if (self::$debug) {
     Log::record('[ PARAM ] ' . var_export($request->param(), true), 'info');
 }
 ```
-8.构造页面输出 （查看thinkphp5 源码分析四 数据构造）
+##### 8.构造页面输出 （查看thinkphp5 源码分析四 数据构造）
 
-```
+```php
  // 请求缓存检查
  $request->cache($config['request_cache'], $config['request_cache_expire'],        
  $config['request_cache_except']);
  // 查看thinkphp5 源码分析四 数据构造
  $data = self::exec($dispatch, $config);
 ```
-9.清空Loader类的实例化
+##### 9.清空Loader类的实例化
 
-```
+```php
 // 清空Loader类的实例化
 Loader::clearInstance();
 ```
-10.输出数据
+##### 10.输出数据
 
-```
+```php
 // 输出数据到客户端
 if ($data instanceof Response) {
     // 是否是 response 的实例
@@ -168,9 +167,9 @@ if ($data instanceof Response) {
     $response = Response::create();
 }
 ```
-11.发送数据到客户端
+##### 11.发送数据到客户端
 
-```
+```php
 // 处理输出数据
 $data = $this->getContent();
 // Trace调试注入

@@ -1,23 +1,27 @@
 ---
 title: PHPSTORM XDEBUG 调试配置
-date: 2020-03-25 15:45:37
+date: 2017-02-25 15:45:37
 tags:
+    - php
+    - xdebug
+categories:
+    - PHP
 ---
 
-#### 1.  php配置文件配置
+#### 1.php配置文件配置
 
 ![这里写图片描述](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTI3MTQzNTAyMTEx?x-oss-process=image/format,png)   
- 
+```php 
  xdebug.remote_host  phpstorm所在客户端ip
  xdebug.remote_port  xdebug连接端口
  xdebug.idekey   IDE的KEY 
-
+```
 <!-- more -->
  
  ![这里写图片描述](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTI3MTUxODA4MjEy?x-oss-process=image/format,png)
  
  重启php-fpm
-#### 2.  phpstorm配置####
+#### 2.phpstorm配置
 打开 File --> Settings --> Languages & Frameworks --> PHP
 ![这里写图片描述](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTI3MTQ0NjA0NDM1?x-oss-process=image/format,png)  
 
@@ -49,14 +53,14 @@ Port 就是php配置文件中xdebug.remote_port所配置的端口
 
 ![这里写图片描述](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTI3MTUwNDI1MDA1?x-oss-process=image/format,png)  
 
-#### 3.  xdebug调试####
+#### 3.xdebug调试
 在所需要调试的代码前面 单击 出现红点
 [外链图片转存中...(img-QhfY9vIB-1576464026166)]  
 
 点击绿色小虫子  开始调试   按F8进行逐行调试
 ![这里写图片描述](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTI3MTUwODM5NzY0?x-oss-process=image/format,png)  
   
-#### 4.  postman xdebug调试####
+#### 4.postman xdebug调试
 
 只需要在post的数据中加上  XDEBUG_SESSION_START = PHPSTORM 就可以进行调试了
  ![这里写图片描述](https://imgconvert.csdnimg.cn/aHR0cDovL2ltZy5ibG9nLmNzZG4ubmV0LzIwMTcxMTI3MTUxMzQ5NTYx?x-oss-process=image/format,png)

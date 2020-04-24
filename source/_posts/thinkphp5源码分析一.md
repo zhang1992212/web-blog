@@ -1,19 +1,20 @@
 ---
 title: thinkphp5源码分析一
-date: 2020-03-25 12:22:52
+date: 2018-09-01 12:22:52
 tags: 
-	- THINKPHP5 
-	- PHP
+	- thinkphp5 
+	- php
 	- 源码分析
-categorites: 
+categories: 
     - PHP
-    - THINKPHP5
+id:
+	- 1
 ---
-##### 1 入口文件源代码(/public/index.php) 
+#### 1 入口文件源代码(/public/index.php) 
 
 ----------
 
-```
+```php
  // [ 应用入口文件 ]
  // 定义应用目录
  define('APP_PATH', __DIR__ . '/../application/');
